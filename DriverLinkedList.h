@@ -25,14 +25,13 @@ class DriverNode{
 class DriverLinkedList{
     private:
         DriverNode *head;
-        DriverNode *tail;
         int size = 0;
-        int capacity = 100;
     public:
         DriverLinkedList();
-        void InsertFront(DriverNode *drivernodeVal);
-        void InsertBack(DriverNode *drivernodeVal);
-        void InsertAfter(string criteria, DriverNode *drivernodeVal);
+        void InsertFront(DriverNode* drivernodeVal);
+        void InsertBack(DriverNode* drivernodeVal);
+        void InsertAfter(string county, DriverNode* drivernodeVal);
+        void addDriver(Driver* driverVal);
         DriverNode* Search(string license_idVal);
 };
 
