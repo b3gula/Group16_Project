@@ -30,7 +30,7 @@ class DriverLinkedList{
         void InsertFront(DriverNode *drivernodeVal);
         void InsertBack(DriverNode *drivernodeVal);
         void InsertAfter(string county, DriverNode *drivernodeVal);
-        DriverNode* Search(string license_idVal);
+        void Remove(string license_numVal);
         bool empty();
 };
 
