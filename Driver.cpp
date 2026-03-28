@@ -1,112 +1,113 @@
 #include "Driver.h"
 #include <iostream>
-using namespace std;
+#include <string>
+using namespace std; 
 
-void Driver::setName(string nameVal){
-    name = nameVal;
+Driver::Driver (int licNum, string name, Date dob, Address add, Date licDate, int exp)
+: licenseNum(licNum), name(name), dob(dob), address(add), licenseDate(licDate), exp(exp)
+{
+    ageCate = "";
+    workCate = "";
+    expCate = "";
+    medCond = "";
+
+    maxTicket = 10;
+    tickets = new Ticket[maxTicket];
+    ticketCount =0;
 }
 
-void Driver::setLicense(string licenseVal){
-    license_num = licenseVal;
+Driver::~Driver(){
+    delete[] tickets;
 }
 
-void Driver::setDOB(Date dobVal){
-    DOB = dobVal;
+int Driver::getLicenseNum() const{
+    return licenseNum;
 }
-
-void Driver::setLicenseDate(Date licDateVal){
-    licenseDate = licDateVal;
+string Driver::getName() const{
+    return name;
 }
-
-void Driver::setAddress(Address addrVal){
-    address = addrVal;
+Date Driver::getDob() const{
+    return dob;
 }
-
-void Driver::setTicket(Ticket ticketVal){
-    ticket = ticketVal;
+Address Driver::getAdd() const{
+    return address; 
 }
-
-void Driver::setAgeCatg(AgeCatg ageVal){
-    age = ageVal;
-}
-
-void Driver::setExperienceCatg(ExperienceCatg expVal){
-    exp = expVal;
-}
-
-void Driver::setWorkCatg(WorkCatg workVal){
-    work = workVal;
-}
-
-void Driver::setMedicalCond(MedicalCond medVal){
-    med = medVal;
-}
-
-string Driver::getCounty(){
-    return address.getCounty();
-}
-
-string Driver::getLicenseNum(){
-    return license_num;
-}
-
- Date Driver::getlicenseDate() const{
+Date Driver::getLicenseDate() const{
     return licenseDate;
 }
+int Driver::getExp() const{
+    return exp;
+}
+string Driver::getCounty() const{
+    return address.getCounty();
+}
+int Driver::getAge() const{
+    return dob.getAge();
+}
 
-void Driver::display(){
-    cout << "Name: " << name << "\n";
-    cout << "License #: " << license_num << "\n";
-    cout << "DOB: ";
-    DOB.display();
-    cout << "License Date: ";
-    licenseDate.display();
+void Driver::setAgeCate() {
+    int age = dob.getAge(); 
+
+    if (age >= 16 && age <= 28){
+        ageCate = "Youth";
+    }
+    else if (age <= 50){
+        ageCate = "Middle-aged";
+    }
+    else {
+        ageCate = "Senior";
+    }
+}
+void Driver::setExpCate(){
+    if (exp <= 5){
+        expCate = "New drivers";
+    }
+    else if (exp <= 15){
+        expCate = "Moderately experienced drivers";
+    }
+    else {
+        expCate = "Highly experienced drivers";
+    }
+}
+void Driver::setWorkCate(string work){
+    workCate = work;
+}
+void Driver::setMedCate(string med){
+    medCond = med; 
+}
+
+void Driver::addTicket(Ticket t){
+    if (ticketCount < maxTicket){
+        tickets[ticketCount] = t; 
+        ticketCount++;
+    }
+}
+
+bool Driver::hasTickets() const{
+    return ticketCount > 0;
+}
+
+void Driver::display() const{
+    cout << "License number: " << licenseNum << endl;
+    cout << "Name: " << name << endl;
+    cout << "Age: " << dob.getAge() << " (" << ageCate << ")" << endl;
+    cout << "Work type: " << workCate << endl;
+    cout << "Experience: " << exp << " (" << expCate << ")" << endl;
     cout << "Address: ";
+    cout << endl;
     address.display();
-    cout << "\n";
-    cout << "Ticket Info:\n";
-    ticket.display();
-    cout << "Age Category: " << AgeCatgToString(age) << "\n";
-    cout << "Experience: " << ExperienceCatgToString(exp) << "\n";
-    cout << "Work: " << WorkCatgToString(work) << "\n";
-    cout << "Medical: " << MedicalCondToString(med) << "\n";
-}
+    cout << endl;
+    cout << "License issue Date: ";
+    licenseDate.display();
+    cout << endl;
+     
+    cout << "Ticket count: " << ticketCount << endl;
 
-string AgeCatgToString(AgeCatg a){
-    switch(a){
-        case YOUTH: return "Youth";
-        case MIDDLE_AGED: return "Middle-aged";
-        case SENIOR: return "Senior";
-        default: return "Unknown";
-   }
-}
-
-string WorkCatgToString(WorkCatg w){
-    switch(w){
-        case STUDENT: return "Student";
-        case GOV_EMPLOYEE: return "Government employee";
-        case SELF_EMPLOYED: return "Self-employed";
-        case BUSINESS_OWNER: return "Business owner";
-        case PRIVATE_EMPLOYEE: return "Private sector employee";
-        default: return "Unknown";
-   }
-}
-
-string ExperienceCatgToString(ExperienceCatg e){
-    switch(e){
-        case NEW_DRIVER: return "New driver";
-        case MODERATE_DRIVER: return "Moderately experienced";
-        case HIGHLY_EXPERIENCED: return "Highly experienced";
-        default: return "Unknown";
-   }
-}
-
-string MedicalCondToString(MedicalCond m){
-    switch(m){
-        case FIT: return "Fit";
-        case VISION_IMPAIRED: return "Vision impaired";
-        case UPPER_EXTREMITY_IMPAIRMENT: return "Upper extremity impairment";
-        case LOCOMOTOR_DISABILITY: return "Locomotor disability";
-        default: return "Unknown";
-   }
+    if (ticketCount > 0){
+        for (int i=0; i<ticketCount; i++){
+            cout << "Ticket: " << i+1 << ":" << endl;
+            tickets[i].display();
+            cout << endl;
+        }
+    }
 }
