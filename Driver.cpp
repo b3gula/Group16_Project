@@ -50,6 +50,10 @@ string Driver::getLicenseNum(){
     return license_num;
 }
 
+ Date Driver::getlicenseDate() const{
+    return licenseDate;
+}
+
 void Driver::display(){
     cout << "Name: " << name << "\n";
     cout << "License #: " << license_num << "\n";
