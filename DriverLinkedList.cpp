@@ -14,6 +14,12 @@ DriverLinkedList::~DriverLinkedList(){
         delete current;
         current = next;
     }
+    DriverNode* traverse = head;
+    while(traverse){
+        DriverNode* next = traverse->next;
+        delete traverse;
+        traverse = next;
+    }
     head = nullptr;
     size = 0;
 }
@@ -26,6 +32,7 @@ void DriverLinkedList::InsertFront(DriverNode *drivernodeVal){
 
 void DriverLinkedList::InsertBack(DriverNode *drivernodeVal){
     if(head==nullptr){
+    if(head == nullptr){
         head = drivernodeVal;
     }
     else{
@@ -39,6 +46,9 @@ void DriverLinkedList::InsertBack(DriverNode *drivernodeVal){
 }
 
 void DriverLinkedList::InsertAfter(string county, DriverNode *drivernodeVal){
+    if(head == nullptr){
+        head = drivernodeVal;
+    }
     DriverNode *traverse = head;
     while(traverse!=nullptr){
         if(traverse->data.getCounty() == county){
@@ -62,6 +72,37 @@ DriverNode* DriverLinkedList::Search(string license_idVal){
     }
     return nullptr;
 }
+
+bool DriverLinkedList::empty(){
+    return head == nullptr;
+}
+void DriverLinkedList::Remove(string license_numVal){
+    if (head == nullptr){
+        return;
+    }
+
+    if(head->data.getLicenseNum() == license_numVal){
+        DriverNode* temp = head;
+        head = head->next;
+        delete temp;
+        size--;
+        return;
+    }
+    
+    DriverNode* traverse = head;
+    while(traverse->next != nullptr){
+        if(traverse->next->data.getLicenseNum() == license_numVal){
+            DriverNode* temp = traverse->next;
+            traverse->next = temp->next;
+            delete temp;
+            size--;
+            return;
+        }
+        traverse = traverse->next;
+    }
+}
+
+
 
 bool DriverLinkedList::empty(){
     return head == nullptr;

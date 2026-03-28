@@ -1,0 +1,31 @@
+Name,City,Age,Age Category,Work Category,Experience (Years),Experience Category,Medical Condition,Frequent Location,Has Ticket,Ticket Date,Ticket Location
+Person_1,Denton,55,Senior,Government employee,4,New,Fit,Frisco,FALSE,,
+Person_2,Frisco,25,Youth,Student,9,Moderate,Locomotor disability,Dallas,TRUE,12/8/2025,Fort Worth
+Person_3,Plano,73,Senior,Business owner,2,New,Locomotor disability,Fort Worth,FALSE,,
+Person_4,Dallas,71,Senior,Student,27,Highly experienced,Vision impaired,Plano,FALSE,,
+Person_5,Denton,51,Senior,Business owner,20,Highly experienced,Vision impaired,Frisco,FALSE,,
+Person_6,Dallas,47,Middle-aged,Private sector employee,0,New,Fit,Denton,TRUE,3/21/2026,Fort Worth
+Person_7,Fort Worth,29,Middle-aged,Private sector employee,7,Moderate,Vision impaired,Fort Worth,FALSE,,
+Person_8,Fort Worth,49,Middle-aged,Government employee,11,Moderate,Upper extremity impairment,Frisco,TRUE,11/29/2023,Dallas
+Person_9,Dallas,34,Middle-aged,Government employee,5,New,Vision impaired,Fort Worth,TRUE,7/10/2023,Dallas
+Person_10,Denton,20,Youth,Government employee,4,New,Locomotor disability,Plano,TRUE,1/3/2026,Frisco
+Person_11,Frisco,31,Middle-aged,Business owner,3,New,Locomotor disability,Fort Worth,FALSE,,
+Person_12,Dallas,51,Senior,Self-employed,27,Highly experienced,Locomotor disability,Plano,FALSE,,
+Person_13,Denton,30,Middle-aged,Self-employed,0,New,Vision impaired,Plano,TRUE,2/14/2026,Plano
+Person_14,Dallas,55,Senior,Private sector employee,38,Highly experienced,Vision impaired,Denton,FALSE,,
+Person_15,Fort Worth,46,Middle-aged,Self-employed,0,New,Fit,Plano,FALSE,,
+Person_16,Dallas,44,Middle-aged,Government employee,11,Moderate,Locomotor disability,Dallas,FALSE,,
+Person_17,Fort Worth,37,Middle-aged,Government employee,4,New,Vision impaired,Dallas,TRUE,4/16/2025,Frisco
+Person_18,Denton,43,Middle-aged,Government employee,24,Highly experienced,Vision impaired,Plano,FALSE,,
+Person_19,Plano,40,Middle-aged,Business owner,3,New,Upper extremity impairment,Plano,FALSE,,
+Person_20,Fort Worth,26,Youth,Business owner,6,Moderate,Upper extremity impairment,Plano,FALSE,,
+Person_21,Fort Worth,28,Youth,Student,10,Moderate,Locomotor disability,Fort Worth,FALSE,,
+Person_22,Plano,41,Middle-aged,Student,22,Highly experienced,Vision impaired,Plano,FALSE,,
+Person_23,Dallas,27,Youth,Student,8,Moderate,Upper extremity impairment,Dallas,TRUE,11/21/2024,Fort Worth
+Person_24,Frisco,60,Senior,Private sector employee,23,Highly experienced,Vision impaired,Plano,TRUE,7/30/2023,Dallas
+Person_25,Plano,35,Middle-aged,Student,16,Highly experienced,Upper extremity impairment,Frisco,TRUE,7/11/2024,Plano
+Person_26,Dallas,46,Middle-aged,Business owner,28,Highly experienced,Vision impaired,Frisco,TRUE,11/30/2025,Dallas
+Person_27,Fort Worth,64,Senior,Student,43,Highly experienced,Upper extremity impairment,Denton,TRUE,11/22/2023,Frisco
+Person_28,Frisco,16,Youth,Private sector employee,0,New,Locomotor disability,Dallas,TRUE,1/17/2026,Plano
+Person_29,Frisco,33,Middle-aged,Self-employed,11,Moderate,Upper extremity impairment,Denton,FALSE,,
+Person_30,Denton,47,Middle-aged,Business owner,12,Moderate,Upper extremity impairment,Plano,TRUE,4/27/2024,Fort Worth

@@ -15,7 +15,7 @@ void Driver::setDOB(Date dobVal){
 }
 
 void Driver::setLicenseDate(Date licDateVal){
-    license_date = licDateVal;
+    licenseDate = licDateVal;
 }
 
 void Driver::setAddress(Address addrVal){
@@ -27,41 +27,45 @@ void Driver::setTicket(Ticket ticketVal){
 }
 
 void Driver::setAgeCatg(AgeCatg ageVal){
-    age_catg = ageVal;
+    age = ageVal;
 }
 
 void Driver::setExperienceCatg(ExperienceCatg expVal){
-    experience_catg = expVal;
+    exp = expVal;
 }
 
 void Driver::setWorkCatg(WorkCatg workVal){
-    work_catg = workVal;
+    work = workVal;
 }
 
 void Driver::setMedicalCond(MedicalCond medVal){
-    medical_cond = medVal;
+    med = medVal;
+}
+
+string Driver::getCounty(){
+    return address.getCounty();
+}
+
+string Driver::getLicenseNum(){
+    return license_num;
 }
 
 void Driver::display(){
     cout << "Name: " << name << "\n";
     cout << "License #: " << license_num << "\n";
-    cout << "DOB: " << DOB.Day << "/" << DOB.Month << "/" << DOB.Year << "\n";
-    cout << "License Date: " << license_date.Day << "/" << license_date.Month << "/" << license_date.Year << "\n";
-
-    cout << "Address: " << address.Street_address << ", "
-         << address.City << ", "
-         << address.State << ", "
-         << address.County << " "
-         << address.Zip_code << "\n";
-
-    cout << "Ticket Date: " << ticket.Ticket_date.Day << "/"
-         << ticket.Ticket_date.Month << "/"
-         << ticket.Ticket_date.Year << "\n";
-
-    cout << "Age Category: " << AgeCatgToString(age_catg) << "\n";
-    cout << "Experience: " << ExperienceCatgToString(experience_catg) << "\n";
-    cout << "Work: " << WorkCatgToString(work_catg) << "\n";
-    cout << "Medical: " << MedicalCondToString(medical_cond) << "\n";
+    cout << "DOB: ";
+    DOB.display();
+    cout << "License Date: ";
+    licenseDate.display();
+    cout << "Address: ";
+    address.display();
+    cout << "\n";
+    cout << "Ticket Info:\n";
+    ticket.display();
+    cout << "Age Category: " << AgeCatgToString(age) << "\n";
+    cout << "Experience: " << ExperienceCatgToString(exp) << "\n";
+    cout << "Work: " << WorkCatgToString(work) << "\n";
+    cout << "Medical: " << MedicalCondToString(med) << "\n";
 }
 
 string AgeCatgToString(AgeCatg a){
