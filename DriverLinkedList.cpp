@@ -1,23 +1,36 @@
 #include "DriverLinkedList.h"
 #include <iostream>
+using namespace std;
 
-DriverLinkedList::DriverLinkedList() {
+DriverLinkedList::DriverLinkedList(){
     head = nullptr;
     size = 0;
 }
 
-void DriverLinkedList::InsertFront(DriverNode* drivernodeVal) {
-    drivernodeVal->next = head; // direct access
+DriverLinkedList::~DriverLinkedList(){
+    DriverNode* current = head;
+    while(current){
+        DriverNode* next = current->next;
+        delete current;
+        current = next;
+    }
+    head = nullptr;
+    size = 0;
+}
+
+void DriverLinkedList::InsertFront(DriverNode *drivernodeVal){
+    drivernodeVal->next = head;
     head = drivernodeVal;
     size++;
 }
 
-void DriverLinkedList::InsertBack(DriverNode* drivernodeVal) {
-    if (!head) {
+void DriverLinkedList::InsertBack(DriverNode *drivernodeVal){
+    if(head==nullptr){
         head = drivernodeVal;
-    } else {
-        DriverNode* temp = head;
-        while (temp->next != nullptr) {
+    }
+    else{
+        DriverNode *temp = head;
+        while(temp->next!=nullptr){
             temp = temp->next;
         }
         temp->next = drivernodeVal;
@@ -25,27 +38,31 @@ void DriverLinkedList::InsertBack(DriverNode* drivernodeVal) {
     size++;
 }
 
-void DriverLinkedList::InsertAfter(string county, DriverNode* drivernodeVal) {
-    DriverNode* temp = head;
-    while (temp != nullptr) {
-        if (temp->data.getCounty() == county) {
-            drivernodeVal->next = temp->next;
-            temp->next = drivernodeVal;
+void DriverLinkedList::InsertAfter(string county, DriverNode *drivernodeVal){
+    DriverNode *traverse = head;
+    while(traverse!=nullptr){
+        if(traverse->data.getCounty() == county){
+            drivernodeVal->next = traverse->next;
+            traverse->next = drivernodeVal;
             size++;
             return;
         }
-        temp = temp->next;
+        traverse = traverse->next;
     }
     InsertBack(drivernodeVal);
 }
 
-DriverNode* DriverLinkedList::Search(string license_idVal) {
-    DriverNode* temp = head;
-    while (temp != nullptr) {
-        if (temp->data.getLicenseID() == license_idVal) {
-            return temp;
+DriverNode* DriverLinkedList::Search(string license_idVal){
+    DriverNode *traverse = head;
+    while(traverse!=nullptr){
+        if(traverse->data.getLicenseNum()==license_idVal){
+            return traverse;
         }
-        temp = temp->next;
+        traverse = traverse->next;
     }
     return nullptr;
+}
+
+bool DriverLinkedList::empty(){
+    return head == nullptr;
 }
