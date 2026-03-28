@@ -1,38 +1,53 @@
-#ifndef DRIVER_LL_H
-#define DRIVER_LL_H
-#include "Driver.h"
+#ifndef DRIVER_H
+#define DRIVER_H
+#include "Address.h"
+#include "Date.h"
+#include "Ticket.h"
 #include <string>
 using namespace std;
 
-class DriverNode{
-    private:
-        DriverNode *next;
-        DriverNode *prev;
-        Driver data;
+enum AgeCatg { YOUTH, MIDDLE_AGED, SENIOR};
+enum WorkCatg { STUDENT, GOV_EMPLOYEE, SELF_EMPLOYED, BUSINESS_OWNER, PRIVATE_EMPLOYEE};
+enum ExperienceCatg { NEW_DRIVER, MODERATE_DRIVER, HIGHLY_EXPERIENCED};
+enum MedicalCond { FIT, VISION_IMPAIRED, UPPER_EXTREMITY_IMPAIRMENT, LOCOMOTOR_DISABILITY};
 
-    public:
-        DriverNode(){
-            next = nullptr;
-            prev = nullptr;
-        }
-        DriverNode(Driver driverVal){
-            data = driverVal;
-            next = nullptr;
-            prev = nullptr;
-        }
+class Driver {
+public:
+    void setName(string nameVal);
+    void setLicense(string licenseVal);
+    void setDOB(Date dobVal);
+    void setLicenseDate(Date licDateVal);
+    void setAddress(Address addrVal);
+    void setTicket(Ticket ticketVal);
+
+    void setAgeCatg(AgeCatg ageVal);
+    void setExperienceCatg(ExperienceCatg expVal);
+    void setWorkCatg(WorkCatg workVal);
+    void setMedicalCond(MedicalCond medVal);
+
+    string getCounty();
+    string getLicenseNum();
+
+    void display();
+
+private:
+    string name;       
+    string license_num;
+    Ticket ticket;
+    AgeCatg age;
+    ExperienceCatg exp;
+    WorkCatg work;
+    MedicalCond med;
+
+    Address address;
+
+    Date DOB;
+    Date licenseDate;
 };
 
-class DriverLinkedList{
-    private:
-        DriverNode *head;
-        int size = 0;
-    public:
-        DriverLinkedList();
-        void InsertFront(DriverNode* drivernodeVal);
-        void InsertBack(DriverNode* drivernodeVal);
-        void InsertAfter(string county, DriverNode* drivernodeVal);
-        void addDriver(Driver* driverVal);
-        DriverNode* Search(string license_idVal);
-};
+string AgeCatgToString(AgeCatg ageVal);
+string WorkCatgToString(WorkCatg workVal);
+string ExperienceCatgToString(ExperienceCatg expVal);
+string MedicalCondToString(MedicalCond medVal);
 
 #endif
