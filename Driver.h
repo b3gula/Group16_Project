@@ -1,54 +1,49 @@
 #ifndef DRIVER_H
-#define DRIVER_H
-#include "Address.h"
-#include "Date.h"
-#include "Ticket.h"
-#include <string>
-using namespace std;
+#define DRIVER_H 
 
-enum AgeCatg { YOUTH, MIDDLE_AGED, SENIOR};
-enum WorkCatg { STUDENT, GOV_EMPLOYEE, SELF_EMPLOYED, BUSINESS_OWNER, PRIVATE_EMPLOYEE};
-enum ExperienceCatg { NEW_DRIVER, MODERATE_DRIVER, HIGHLY_EXPERIENCED};
-enum MedicalCond { FIT, VISION_IMPAIRED, UPPER_EXTREMITY_IMPAIRMENT, LOCOMOTOR_DISABILITY};
+#include "Date.h"
+#include "Address.h"
+#include "Ticket.h"
+#include <string> 
+using namespace std; 
 
 class Driver {
-public:
-    void setName(string nameVal);
-    void setLicense(string licenseVal);
-    void setDOB(Date dobVal);
-    void setLicenseDate(Date licDateVal);
-    void setAddress(Address addrVal);
-    void setTicket(Ticket ticketVal);
+    public:
+        Driver(int licNum, string name, Date dob, Address add, Date licDate, int exp);
+        ~Driver();
 
-    void setAgeCatg(AgeCatg ageVal);
-    void setExperienceCatg(ExperienceCatg expVal);
-    void setWorkCatg(WorkCatg workVal);
-    void setMedicalCond(MedicalCond medVal);
+        int getLicenseNum() const; 
+        string getName() const; 
+        Date getDob() const;
+        Address getAdd() const; 
+        Date getLicenseDate() const; 
+        int getExp() const; 
+        string getCounty() const;
+        int getAge() const; 
 
-    string getCounty();
-    string getLicenseNum();
-    Date getlicenseDate() const;
+        void setAgeCate();
+        void setWorkCate(string work);
+        void setExpCate();
+        void setMedCate(string med);
 
-    void display();
+        void addTicket(Ticket t);
+        bool hasTickets() const; 
 
-private:
-    string name;       
-    string license_num;
-    Ticket ticket;
-    AgeCatg age;
-    ExperienceCatg exp;
-    WorkCatg work;
-    MedicalCond med;
-
-    Address address;
-
-    Date DOB;
-    Date licenseDate;
+        void display() const; 
+        
+    private: 
+        int licenseNum;
+        string name;
+        Date dob;
+        Address address; 
+        Date licenseDate; 
+        int exp;
+        string ageCate; 
+        string workCate; 
+        string expCate; 
+        string medCond; 
+        Ticket* tickets; 
+        int ticketCount;
+        int maxTicket; 
 };
-
-string AgeCatgToString(AgeCatg ageVal);
-string WorkCatgToString(WorkCatg workVal);
-string ExperienceCatgToString(ExperienceCatg expVal);
-string MedicalCondToString(MedicalCond medVal);
-
 #endif
