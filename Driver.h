@@ -25,6 +25,9 @@ public:
     void setWorkCatg(WorkCatg workVal);
     void setMedicalCond(MedicalCond medVal);
 
+    string getCounty();
+    string getLicenseNum();
+
     void display();
 
 private:
