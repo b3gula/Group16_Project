@@ -5,6 +5,7 @@ using namespace std;
 
 class Date {
     public:
+        Date();
         Date (int d, int m, int y);
         
         int getDay() const;
