@@ -27,6 +27,7 @@ public:
 
     string getCounty();
     string getLicenseNum();
+    Date getlicenseDate() const;
 
     void display();
 
