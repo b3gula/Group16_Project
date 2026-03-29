@@ -13,7 +13,7 @@ void DriverDatabase::addDriver(Driver* driver){
     driver->setExpCate();
 
     hashTable.insert(driver);
-    activeDrivers.addDriver(driver);
+    activeDrivers.insertByCounty(driver, driver ->getCounty());
     recentTracker.addLicense(driver);
     oldestTracker.addLicense(driver);
 }
